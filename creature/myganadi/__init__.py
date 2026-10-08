@@ -133,8 +133,7 @@ class Myganadi:
             if tilt:
                 p.rotate(tilt)
             p.scale(sx * (-1 if facing < 0 else 1), sy)
-            if hovering:
-                p.setOpacity(0.75)
+
             half = SIZE * u / 2.0
             p.drawImage(QRectF(-half, -SIZE * u, 2 * half, SIZE * u), im)
             p.restore()
