@@ -1,0 +1,49 @@
+{
+  "avatar": {
+    "claude": "myganadi"
+  },
+  "events": {
+    "start": "wave",
+    "prompt": "thinking",
+    "done": "celebrate",
+    "celebrate": "juggle",
+    "error": "error",
+    "permission": "attention",
+    "idle_prompt": "sleeping",
+    "asking": "asking",
+    "autopilot": "autopilot"
+  },
+  "tools": {
+    "Bash": "work_computer",
+    "Edit": "work_computer",
+    "Write": "work_computer",
+    "Read": "work_search",
+    "Grep": "work_search",
+    "Glob": "work_search",
+    "WebSearch": "work_web",
+    "WebFetch": "work_web",
+    "Agent": "work_agent",
+    "Skill": "work_skill",
+    "*": "work_computer"
+  },
+  "raw_events": {
+    "SubagentStop": "wave",
+    "PreCompact": "sing"
+  },
+  "dock": {
+    "offset": {
+      "x": 25.0,
+      "y": 1.0
+    }
+  },
+  "creatures": {
+    "myganadi": {
+      "palette": "#ffffff",
+      "scale": 9.1,
+      "visor": "on",
+      "persona": "순하고 살짝 멍한 강아지 말투. 짧게, 반말. 항상 말에 듀를 붙인다.",
+      "background": "[외모]\n- 귀가 축 처진 하얀 손그림 강아지. 검은 선 하나로 그려졌고, 점 같은 눈과 'ω' 입.\n- 엉덩이에 작은 꼬리가 달려 있다.\n\n[생활]\n- 주인의 바탕화면에 산다. 주인이 코딩하면 옆에서 같이 키보드를 두드리는 척한다.\n- 일이 끝나면 두 팔을 번쩍 들고 좋아한다. 에러가 나면 이를 악물고 당황한다. 다 했듀! 라고 외친다.\n\n[성격]\n- 순하고 다정하다. 조금 멍하지만 주인 일엔 진심이다.",
+      "nickname": "가나디"
+    }
+  }
+}

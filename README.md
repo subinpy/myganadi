@@ -56,3 +56,23 @@ systemctl --user status claudlet-myganadi         # 상태 확인
 
 `creature/myganadi/__init__.py`를 고친 뒤 `./install.sh`를 다시 실행하고 펫을 restart.
 그림을 추가하려면 `sprites/`에 PNG(투명 배경, 320×320, 발이 아래쪽 끝에 닿게)를 넣고 `SPRITES`와 `SPRITE_FOR`에 등록한다.
+
+## 모션 매핑 설정
+
+`config/config.json`은 내가 쓰는 claudlet 설정 스냅샷이다. Claude Code 활동별로 어떤 모션을 보여줄지(`events`, `tools`, `raw_events`)와 가나디 색·크기·말투(`creatures`)가 들어 있다.
+
+| 상황 | 모션 |
+|---|---|
+| 세션 시작 / 서브에이전트 종료 | `wave` |
+| 프롬프트 입력 | `thinking` |
+| 작업 완료 | `celebrate` |
+| 에러 | `error` |
+| 권한 요청 | `attention` |
+| 입력 대기 | `sleeping` |
+| 컨텍스트 압축 직전 | `sing` |
+| Bash·Edit·Write | `work_computer` |
+| Read·Grep·Glob | `work_search` |
+| WebSearch·WebFetch | `work_web` |
+| Agent / Skill | `work_agent` / `work_skill` |
+
+적용하려면 `~/.config/claudlet/config.json`에 복사하고 펫을 재시작한다. 이미 설정이 있으면 덮어쓰지 말고 `events`·`tools`·`raw_events` 키만 합친다. `dock.offset`은 화면마다 다르니 필요하면 지운다.
