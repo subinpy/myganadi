@@ -20,6 +20,7 @@ cur = json.load(open(dst)) if os.path.exists(dst) else {}
 new = json.load(open(src))
 for k in ("lang", "events", "tools", "raw_events"):
     cur[k] = new[k]
+cur.setdefault("pointer", {}).update(new["pointer"])   # brain: 대화창에 가나디가 직접 답한다
 mine = cur.setdefault("creatures", {}).setdefault("myganadi", {})
 for k, v in new["creatures"]["myganadi"].items():
     if k in ("persona", "background", "nickname"):

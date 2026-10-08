@@ -61,7 +61,8 @@ systemctl --user status claudlet-myganadi         # 상태 확인
 
 ## 모션 매핑 설정
 
-`config/config.json`은 내가 쓰는 claudlet 설정 스냅샷이다. Claude Code 활동별로 어떤 모션을 보여줄지(`events`, `tools`, `raw_events`), 언어(`lang: ko`), 가나디 색·크기·말투(`creatures`)가 들어 있다.
+`config/config.json`은 내가 쓰는 claudlet 설정 스냅샷이다. Claude Code 활동별로 어떤 모션을 보여줄지(`events`, `tools`, `raw_events`), 언어(`lang: ko`), 대화창에 가나디가 직접 답하기(`pointer.brain`), 가나디 색·크기·말투(`creatures`)가 들어 있다.
+`pointer.brain`이 켜져 있으면 말을 걸 때마다 claude(haiku) 호출이 한 번 나간다. 꺼져 있으면 세션에 안 붙은 펫은 대답하지 않는다.
 
 | 상황 | 모션 |
 |---|---|
@@ -77,5 +78,5 @@ systemctl --user status claudlet-myganadi         # 상태 확인
 | WebSearch·WebFetch | `work_web` |
 | Agent / Skill | `work_agent` / `work_skill` |
 
-`install.sh`가 자동으로 합친다. `lang`·`events`·`tools`·`raw_events`와 가나디 말투(`persona`·`background`·`nickname`)는 덮어쓰고, 색·크기 등 나머지 크리처 설정은 없을 때만 채운다. `dock`은 화면마다 다르니 가져오지 않는다.
+`install.sh`가 자동으로 합친다. `lang`·`events`·`tools`·`raw_events`·`pointer.brain`과 가나디 말투(`persona`·`background`·`nickname`)는 덮어쓰고, 색·크기 등 나머지 크리처 설정은 없을 때만 채운다. `dock`은 화면마다 다르니 가져오지 않는다.
 설정을 바꾸면 이 파일을 고치고 `./install.sh`를 다시 실행한다.
