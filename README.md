@@ -35,9 +35,11 @@ cd myganadi && ./install.sh
 `install.sh`가 하는 일:
 1. `creature/myganadi` → `~/.config/claudlet/creatures/myganadi` 복사
 2. `claudlet-config wear myganadi`
-3. 서비스 파일을 `~/.config/systemd/user/`에 설치하고 `enable --now`
+3. `config/config.json`의 모션 매핑·한국어(`lang`)·말투를 `~/.config/claudlet/config.json`에 합침 (아래 [모션 매핑 설정](#모션-매핑-설정))
+4. 서비스 파일을 `~/.config/systemd/user/`에 설치하고 enable 후 restart
 
-`active (running)`이 보이면 끝. 색·크기는 PC마다 따로 저장되므로 `claudlet-config ui`에서 다시 맞춘다.
+`active (running)`이 보이면 끝. 색·크기는 이미 있으면 그대로 두므로 PC마다 `claudlet-config ui`에서 맞춘다.
+claudlet 훅은 새로 연 Claude Code 세션부터 적용된다.
 
 ## 관리
 
@@ -59,7 +61,7 @@ systemctl --user status claudlet-myganadi         # 상태 확인
 
 ## 모션 매핑 설정
 
-`config/config.json`은 내가 쓰는 claudlet 설정 스냅샷이다. Claude Code 활동별로 어떤 모션을 보여줄지(`events`, `tools`, `raw_events`)와 가나디 색·크기·말투(`creatures`)가 들어 있다.
+`config/config.json`은 내가 쓰는 claudlet 설정 스냅샷이다. Claude Code 활동별로 어떤 모션을 보여줄지(`events`, `tools`, `raw_events`), 언어(`lang: ko`), 가나디 색·크기·말투(`creatures`)가 들어 있다.
 
 | 상황 | 모션 |
 |---|---|
@@ -75,4 +77,5 @@ systemctl --user status claudlet-myganadi         # 상태 확인
 | WebSearch·WebFetch | `work_web` |
 | Agent / Skill | `work_agent` / `work_skill` |
 
-적용하려면 `~/.config/claudlet/config.json`에 복사하고 펫을 재시작한다. 이미 설정이 있으면 덮어쓰지 말고 `events`·`tools`·`raw_events` 키만 합친다. `dock.offset`은 화면마다 다르니 필요하면 지운다.
+`install.sh`가 자동으로 합친다. `lang`·`events`·`tools`·`raw_events`와 가나디 말투(`persona`·`background`·`nickname`)는 덮어쓰고, 색·크기 등 나머지 크리처 설정은 없을 때만 채운다. `dock`은 화면마다 다르니 가져오지 않는다.
+설정을 바꾸면 이 파일을 고치고 `./install.sh`를 다시 실행한다.
