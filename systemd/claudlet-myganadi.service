@@ -1,0 +1,15 @@
+[Unit]
+Description=claudlet desktop pet (myganadi)
+PartOf=graphical-session.target
+After=graphical-session.target
+
+[Service]
+Environment=CLAUDLET_AVATAR=myganadi
+WorkingDirectory=%h
+ExecStart=%h/.local/bin/claudlet
+# 우클릭 → 종료로 끄면 그대로 꺼진 채 둔다. 비정상 종료일 때만 다시 띄운다.
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=graphical-session.target
