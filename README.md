@@ -35,8 +35,9 @@ cd myganadi && ./install.sh
 `install.sh`가 하는 일:
 1. `creature/myganadi` → `~/.config/claudlet/creatures/myganadi` 복사
 2. `claudlet-config wear myganadi`
-3. `config/config.json`의 모션 매핑·한국어(`lang`)·말투를 `~/.config/claudlet/config.json`에 합침 (아래 [모션 매핑 설정](#모션-매핑-설정))
-4. 서비스 파일을 `~/.config/systemd/user/`에 설치하고 enable 후 restart
+3. claudlet 버그 패치 (아래 [VSCode에서 모션이 안 나올 때](#vscode에서-모션이-안-나올-때))
+4. `config/config.json`의 모션 매핑·한국어(`lang`)·말투를 `~/.config/claudlet/config.json`에 합침 (아래 [모션 매핑 설정](#모션-매핑-설정))
+5. 서비스 파일을 `~/.config/systemd/user/`에 설치하고 enable 후 restart
 
 `active (running)`이 보이면 끝. 색·크기는 이미 있으면 그대로 두므로 PC마다 `claudlet-config ui`에서 맞춘다.
 claudlet 훅은 새로 연 Claude Code 세션부터 적용된다.
@@ -53,6 +54,16 @@ systemctl --user status claudlet-myganadi         # 상태 확인
 - 실행되자마자 꺼지면 같은 세션의 펫이 이미 떠 있는 것 — 그 펫을 끄고 restart.
 - `systemctl --user is-active graphical-session.target`이 `active`가 아닌 데스크톱 환경이면 systemd 대신 `~/.config/autostart/`에 `.desktop` 파일로 등록해야 한다.
 - 이 상시 펫은 특정 세션에 묶여 있지 않아 작업에 반응하지 않는다. Claude Code 세션마다 반응하는 펫은 claudlet 훅이 따로 붙여 준다.
+
+## VSCode에서 모션이 안 나올 때
+
+claudlet 훅은 `~/.claude/settings.json`에 걸려 있어서 VSCode 확장의 Claude Code에서도 돈다. 세션이 시작되면 훅이 그 세션 전용 펫을 띄우는데, claudlet 2.6.0에는 이 펫이 뜨자마자 죽는 버그가 있다.
+펫을 띄울 때 `PYTHONPATH`에 `claudlet` 패키지 폴더 자체를 넣어서, 그 안의 `claudlet/platform/`이 표준 모듈 `platform`을 가린다(`AttributeError: module 'platform' has no attribute 'system'`).
+그래서 VSCode든 터미널이든 세션 펫이 없어서 모션이 안 나온다. 상시 펫은 이 경로를 안 타서 멀쩡해 보인다.
+
+`install.sh`가 설치된 claudlet의 `cli/hook.py`와 `cli/attach.py`에서 `src_dir`이 `site-packages`를 가리키게 고친다. 이미 고쳐져 있으면 건드리지 않는다.
+`pipx install --force claudlet` 등으로 claudlet을 다시 설치하면 패치가 사라지니 `./install.sh`를 다시 실행한다.
+패치 후에는 VSCode에서 **새 대화**를 열어야 한다. 이미 열려 있던 대화는 `/claudlet`으로 펫을 붙인다.
 
 ## 크리처 수정
 
