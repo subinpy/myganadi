@@ -1,8 +1,6 @@
 {
   "lang": "ko",
-  "avatar": {
-    "claude": "myganadi"
-  },
+  "avatar": "myganadi",
   "events": {
     "start": "wave",
     "prompt": "thinking",

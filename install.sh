@@ -36,7 +36,7 @@ import json, os, sys
 dst, src = sys.argv[1], sys.argv[2]
 cur = json.load(open(dst)) if os.path.exists(dst) else {}
 new = json.load(open(src))
-for k in ("lang", "events", "tools", "raw_events"):
+for k in ("lang", "avatar", "events", "tools", "raw_events"):  # avatar: 어떤 에이전트든 가나디
     cur[k] = new[k]
 cur.setdefault("pointer", {}).update(new["pointer"])   # brain: 대화창에 가나디가 직접 답한다
 mine = cur.setdefault("creatures", {}).setdefault("myganadi", {})
