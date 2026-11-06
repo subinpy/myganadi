@@ -1,7 +1,4 @@
-# myganadi
-
-손그림 하얀 강아지 **가나디**를 [claudlet](https://github.com/YeeDochi/Claudlet) 데스크톱 펫 크리처로 만든 것.
-로그인하면 자동으로 바탕화면에 떠 있다.
+# 가나디**를 [claudlet](https://github.com/YeeDochi/Claudlet) 데스크톱 펫 크리처로 만든 것. 로그인하면 자동으로 바탕화면에 떠있어 귀엽다
 
 ## 구성
 
